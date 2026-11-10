@@ -125,7 +125,7 @@ jobs:
           else
             gh release create "$TAG" --title "$TAG" --notes-file notes.md
           fi
-          gh release upload "$TAG" "$IPA" --clobber
+          gh release upload "$TAG" "build/platform/$IPA" --clobber
 
       - name: Keep the build log if it failed
         if: failure()
