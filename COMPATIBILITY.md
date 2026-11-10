@@ -64,8 +64,12 @@ the matrix runner's final terminal exit was not retained by the host capture.
 
 - **Human full-game.** No launch, login, in-world session, performance measurement, or
   gameplay check was part of this work. Nothing here says the game works.
-- **External JIT.** Not exercised at all. The unsigned generic `.ipa` exists for sideloading;
-  that is not a compatibility result.
+- **External JIT.** One reported run, outside the test matrix. On 2026-11-09 an iPhone Duo on
+  iOS 27.2 (AltStore with a free Apple ID, StikDebug 3.2.2) started Forever 1.60.1 (70862) on
+  eight launches out of eight, and its owner signed in, entered the world and moved around,
+  once patches 0048 and 0049 were in the build. No session length, frame rate or memory figure
+  was recorded: one short human run, not a support claim. The procedure
+  and its limits are in [docs/FREE_APPLE_ID.md](docs/FREE_APPLE_ID.md).
 - **Dictation in the game's own text field.** The app's own voice self-test opened a real
   iPad dictation session, restored it, and measured **-25.8 dBFS**. That demonstrates an
   on-device microphone signal reaching the app, not that speech becomes text in the game.

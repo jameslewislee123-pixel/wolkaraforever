@@ -12,7 +12,8 @@ page is [iPhone support](IPHONE.md).
 
 - Apple-silicon Mac with current Xcode and command-line tools, XcodeGen, and Python 3.
 - A paid Apple Developer membership. The required tunnel and memory capabilities are not
-  available to a Personal Team.
+  available to a Personal Team. Without one, the experimental route is
+  [Install with a free Apple ID](FREE_APPLE_ID.md); it is a different procedure from this page.
 - An unlocked device in Developer Mode that trusts the Mac and has sufficient free storage:
 an  iPad or an iPhone. A Forever installation needs roughly 70 GB, which in practice means an
 iPad.

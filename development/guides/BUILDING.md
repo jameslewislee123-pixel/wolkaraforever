@@ -284,7 +284,9 @@ without JIT, Tolkara says so instead of starting the application. Sideloading
 tools usually change the app's bundle identifier: copy your application's files
 with Finder or the Files app, or set `TOLKARA_BUNDLE_ID` to the installed
 identifier before running a profile's `install.py` (step 5). This mode has
-not been run on a device yet; report what you find in
+been run on one iPhone, as far as the game's login screen: the step-by-step,
+with StikDebug and a free Apple ID, is
+[Install with a free Apple ID](../../docs/FREE_APPLE_ID.md). Report what you find in
 [COMPATIBILITY.md](../../COMPATIBILITY.md).
 
 #### Local AltStore Classic lane

@@ -37,7 +37,9 @@ the project's own tools rather than raw device commands.
 
 From the repository root, create `local.env` from `local.env.example` once and set your own
 `DEVELOPMENT_TEAM`, a unique `TOLKARA_BUNDLE_ID`, and `DEVICE`. Keep that file private; it is
-ignored by Git. For iPhone, the measured execution mode is Developer service:
+ignored by Git. Without a paid membership, the experimental route is
+[Install with a free Apple ID](FREE_APPLE_ID.md), which has reached the login screen on one
+iPhone Duo. For iPhone, the measured execution mode is Developer service:
 
 ```sh
 TOLKARA_MODE=developer-service NATIVE_GUEST_SHIMS=GENERIC wolkaraforever/tools/install.sh

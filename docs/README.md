@@ -10,6 +10,8 @@ outside this folder.
 2. [Use WolkaraForever](USING_WOLKARAFOREVER.md) to install Forever, configure controls
    and voice, manage add-ons, and protect or recover the UI.
 3. [iPhone support](IPHONE.md), for what has actually been measured on a phone.
+4. [Install with a free Apple ID](FREE_APPLE_ID.md): the experimental External JIT route, for
+   anyone without a paid Apple Developer membership.
 
 The behaviour both form factors are held to is
 [the supported-device contract](../development/architecture/DEVICE_CONTRACT.md).
