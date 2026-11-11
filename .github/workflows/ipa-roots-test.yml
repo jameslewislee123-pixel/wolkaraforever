@@ -1,0 +1,29 @@
+
+name: Tolkara Roots Test IPA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: v0.1.1-jitfix
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build IPA with system roots
+        run: |
+          TOLKARA_SYSTEM_ROOTS=YES \
+            wolkaraforever/tools/package_ipa.sh \
+            Tolkara-roots-test.ipa
+
+      - name: Upload test IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Tolkara-roots-test
+          path: build/platform/Tolkara-roots-test.ipa
+          if-no-files-found: error
