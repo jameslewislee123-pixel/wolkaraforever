@@ -1,4 +1,4 @@
-name: Tolkara v1.0.9 Certificate IPA
+name: Tolkara External JIT Diagnostics IPA
 
 on:
   workflow_dispatch:
@@ -7,17 +7,21 @@ jobs:
   build:
     runs-on: xcode-27
     steps:
-      - name: Checkout official v1.0.9 release
+      - name: Checkout diagnostics-enabled main source
         uses: actions/checkout@v5
         with:
           repository: jklock/wolkaraforever
-          ref: v1.0.9
+          ref: 438bf348ddd13ae7a10cc0ea50ccd1b0751e03b6
           persist-credentials: false
 
-      - name: Verify source version and JIT fix
+      - name: Verify exact source and diagnostic implementation
+        shell: bash
         run: |
+          test "$(git rev-parse HEAD)" = "438bf348ddd13ae7a10cc0ea50ccd1b0751e03b6"
           test -f wolkaraforever/patches/0061-external-jit-requires-its-enabler.patch
-          git log -1 --format='%h %s'
+          test -f wolkaraforever/Shell/ExternalJITDiagnostics.m
+          test -f wolkaraforever/tools/classify_external_jit.py
+          echo "Source SHA: $(git rev-parse HEAD)"
 
       - name: Install XcodeGen
         run: brew install xcodegen
@@ -26,11 +30,11 @@ jobs:
         run: |
           TOLKARA_SYSTEM_ROOTS=YES \
             wolkaraforever/tools/package_ipa.sh \
-            Tolkara-v1.0.9-roots-test.ipa
+            Tolkara-diagnostics-438bf348.ipa
 
-      - name: Upload test IPA
+      - name: Upload IPA and source details
         uses: actions/upload-artifact@v4
         with:
-          name: Tolkara-v1.0.9-roots-test
-          path: build/platform/Tolkara-v1.0.9-roots-test.ipa
+          name: Tolkara-diagnostics-438bf348
+          path: build/platform/Tolkara-diagnostics-438bf348.ipa
           if-no-files-found: error
