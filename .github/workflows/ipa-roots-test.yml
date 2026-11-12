@@ -1,4 +1,4 @@
-name: Tolkara Roots Test IPA
+name: Tolkara v1.0.9 Certificate IPA
 
 on:
   workflow_dispatch:
@@ -7,22 +7,30 @@ jobs:
   build:
     runs-on: xcode-27
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout official v1.0.9 release
+        uses: actions/checkout@v5
         with:
-          ref: v0.1.1-jitfix
+          repository: jklock/wolkaraforever
+          ref: v1.0.9
+          persist-credentials: false
+
+      - name: Verify source version and JIT fix
+        run: |
+          test -f wolkaraforever/patches/0061-external-jit-requires-its-enabler.patch
+          git log -1 --format='%h %s'
 
       - name: Install XcodeGen
         run: brew install xcodegen
 
-      - name: Build IPA with system roots
+      - name: Build certificate-enabled External JIT IPA
         run: |
           TOLKARA_SYSTEM_ROOTS=YES \
             wolkaraforever/tools/package_ipa.sh \
-            Tolkara-roots-test.ipa
+            Tolkara-v1.0.9-roots-test.ipa
 
       - name: Upload test IPA
         uses: actions/upload-artifact@v4
         with:
-          name: Tolkara-roots-test
-          path: build/platform/Tolkara-roots-test.ipa
+          name: Tolkara-v1.0.9-roots-test
+          path: build/platform/Tolkara-v1.0.9-roots-test.ipa
           if-no-files-found: error
